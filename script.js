@@ -50,12 +50,24 @@ function displayRSS(items) {
 
         const title = document.createElement('h2');
         title.textContent = item.title;
+        title.addEventListener('click', () => {
+            toggleContent(description);
+        });
         rssItem.appendChild(title);
 
-        const description = document.createElement('p');
-        description.innerHTML = item.description;
+        const description = document.createElement('div');
+        description.style.display = 'none';
+        description.innerHTML = item.content || item.description;
         rssItem.appendChild(description);
 
         rssFeedElement.appendChild(rssItem);
     });
+}
+
+function toggleContent(element) {
+    if (element.style.display === 'none') {
+        element.style.display = 'block';
+    } else {
+        element.style.display = 'none';
+    }
 }
