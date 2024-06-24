@@ -1,40 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SximpleRSS - RSS Okuyucu</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>RSS Okuyucu</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>SximpleRSS</h1>
-        <nav>
-            <ul>
-                <li><a href="#" id="home-link">Ana Sayfa</a></li>
-                <li><a href="#" id="favorites-link">Favoriler</a></li>
-                <li><a href="#" id="settings-link">Ayarlar</a></li>
-            </ul>
-        </nav>
-    </header>
+  <h1>RSS Okuyucu</h1>
+  <ul id="rss-feed"></ul>
 
-<main>
-    <section id="rss-feed">
-        <ul id="news-list">
-            <!-- Haberler dinamik olarak buraya eklenecek -->
-        </ul>
-    </section>
-    <form id="rss-form">
-        <label for="rss-url">RSS URL:</label>
-        <input type="text" id="rss-url" placeholder="RSS adresini girin...">
-        <button type="submit">Takip Et</button>
-    </form>
-</main>
-
-    <footer>
-        <p>&copy; 2024 SximpleRSS. Tüm hakları saklıdır.</p>
-    </footer>
-
-    <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
