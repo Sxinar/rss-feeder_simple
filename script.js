@@ -3,16 +3,10 @@ const rssListElement = document.getElementById('rss-list');
 const rssFeedElement = document.getElementById('rss-feed');
 
 document.getElementById('add-btn').addEventListener('click', function() {
-    const websiteUrl = document.getElementById('rss-url').value;
-    if (websiteUrl && !rssList.includes(websiteUrl)) {
-        fetchRSSFeedUrl(websiteUrl).then(rssUrl => {
-            if (rssUrl) {
-                rssList.push(rssUrl);
-                updateRSSList();
-            } else {
-                alert('No RSS feed found for this website.');
-            }
-        });
+    const rssUrl = document.getElementById('rss-url').value;
+    if (rssUrl && !rssList.includes(rssUrl)) {
+        rssList.push(rssUrl);
+        updateRSSList();
         document.getElementById('rss-url').value = '';
     }
 });
@@ -81,23 +75,4 @@ function toggleContent(element) {
     } else {
         element.style.display = 'none';
     }
-}
-
-function fetchRSSFeedUrl(websiteUrl) {
-    return fetch(websiteUrl)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const linkElements = doc.querySelectorAll('link[type="application/rss+xml"], link[type="application/atom+xml"]');
-            if (linkElements.length > 0) {
-                return linkElements[0].href;
-            } else {
-                return null;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching the website:', error);
-            return null;
-        });
 }
