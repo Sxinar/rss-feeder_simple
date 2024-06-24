@@ -1,50 +1,105 @@
 body {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.mdc-layout-grid {
+    margin-top: 20px;
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.mdc-text-field--outlined .mdc-notched-outline__leading,
+.mdc-text-field--outlined .mdc-notched-outline__trailing {
+    border-radius: 25px;
 }
 
-.haber-kaynagi {
+.mdc-text-field__icon {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#rss-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#rss-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
     display: flex;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.haber-kaynagi label {
-    margin-right: 10px;
+#rss-feed {
+    margin-top: 20px;
 }
 
-.haber-kaynagi input[type="text"] {
-    flex-grow: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
+.rss-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.haber-kaynagi button {
-    padding: 5px 10px;
-    border: none;
+.rss-item h2 {
+    margin: 0 0 10px;
     cursor: pointer;
 }
 
-.haber {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+.rss-item p {
+    margin: 0;
 }
 
-.haber h2 {
-    margin-top: 0;
+.rss-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
 }
 
-.haber a {
-    color: #007bff;
-    text-decoration: none;
+.dark-theme .rss-item,
+.dark-theme #rss-list li {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.mdc-button--primary {
+    color: #6200ee;
+    border-color: #6200ee;
+    border-radius: 25px;
+}
+
+.mdc-button--secondary {
+    color: #03dac6;
+    border-color: #03dac6;
+    border-radius: 25px;
+}
+
+@media (max-width: 600px) {
+    .mdc-layout-grid {
+        padding: 10px;
+    }
+    
+    #rss-list li, .rss-item {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .mdc-button {
+        width: 100%;
+        margin-top: 10px;
+    }
 }
