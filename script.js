@@ -1,6 +1,7 @@
 const rssList = [];
 const rssListElement = document.getElementById('rss-list');
 const rssFeedElement = document.getElementById('rss-feed');
+const themeToggleButton = document.getElementById('theme-toggle-btn');
 
 document.getElementById('add-btn').addEventListener('click', function() {
     const websiteUrl = document.getElementById('rss-url').value;
@@ -20,6 +21,10 @@ document.getElementById('add-btn').addEventListener('click', function() {
 document.getElementById('fetch-all-btn').addEventListener('click', function() {
     rssFeedElement.innerHTML = '';
     rssList.forEach(fetchRSS);
+});
+
+themeToggleButton.addEventListener('click', function() {
+    document.body.classList.toggle('dark-theme');
 });
 
 function updateRSSList() {
@@ -87,4 +92,6 @@ function fetchRSSFeedUrl(websiteUrl) {
         .then(data => data.rssUrl)
         .catch(error => {
             console.error('Error fetching the RSS feed URL:', error);
-            return null
+            return null;
+        });
+}
