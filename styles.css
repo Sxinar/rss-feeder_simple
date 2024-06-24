@@ -3,6 +3,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 .mdc-layout-grid {
@@ -22,6 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 8px;
 }
 
 #rss-feed {
@@ -31,6 +38,8 @@ body {
 .rss-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .rss-item h2 {
@@ -47,4 +56,21 @@ body {
     height: auto;
     display: block;
     margin: 10px 0;
+}
+
+.dark-theme .rss-item {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.mdc-button--primary {
+    background-color: #6200ee;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+.mdc-button--secondary {
+    background-color: #03dac6;
+    color: #000000;
+    border-radius: 8px;
 }
