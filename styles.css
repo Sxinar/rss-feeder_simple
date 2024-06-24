@@ -16,10 +16,21 @@ body.dark-theme {
     padding: 20px;
 }
 
+.mdc-layout-grid__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mdc-text-field--rounded .mdc-notched-outline {
+    border-radius: 24px;
+}
+
 #rss-list {
     list-style: none;
     padding: 0;
     margin-top: 20px;
+    width: 100%;
 }
 
 #rss-list li {
@@ -29,16 +40,21 @@ body.dark-theme {
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 10px;
 }
 
 #rss-feed {
     margin-top: 20px;
+    width: 100%;
 }
 
 .rss-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -66,11 +82,32 @@ body.dark-theme {
 .mdc-button--primary {
     background-color: #6200ee;
     color: #ffffff;
-    border-radius: 8px;
+    border-radius: 24px;
 }
 
 .mdc-button--secondary {
     background-color: #03dac6;
     color: #000000;
-    border-radius: 8px;
+    border-radius: 24px;
+}
+
+.mdc-button--fullwidth {
+    width: 100%;
+}
+
+.mdc-top-app-bar {
+    background-color: #6200ee;
+}
+
+body.dark-theme .mdc-top-app-bar {
+    background-color: #333333;
+}
+
+body.dark-theme .mdc-button--primary {
+    background-color: #bb86fc;
+}
+
+body.dark-theme .mdc-button--secondary {
+    background-color: #03dac6;
+    color: #000000;
 }
