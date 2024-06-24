@@ -23,21 +23,30 @@ h1 {
     margin-bottom: 10px;
 }
 
-#fetch-btn {
+#add-btn, #fetch-all-btn {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
     color: white;
     border: none;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-#fetch-btn:hover {
+#add-btn:hover, #fetch-all-btn:hover {
     background-color: #0056b3;
 }
 
-#rss-feed {
-    margin-top: 20px;
+#rss-list {
+    list-style: none;
+    padding: 0;
+}
+
+#rss-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
 }
 
 .rss-item {
