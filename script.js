@@ -25,6 +25,11 @@ document.getElementById('fetch-all-btn').addEventListener('click', function() {
 
 themeToggleButton.addEventListener('click', function() {
     document.body.classList.toggle('dark-theme');
+    if (document.body.classList.contains('dark-theme')) {
+        themeToggleButton.textContent = 'brightness_7';
+    } else {
+        themeToggleButton.textContent = 'brightness_6';
+    }
 });
 
 function updateRSSList() {
