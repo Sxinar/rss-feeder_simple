@@ -4,39 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS Reader</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">RSS Reader</span>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-        </header>
-        <main class="mdl-layout__content">
-            <div class="page-content" id="app">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="rss-url">
-                            <label class="mdl-textfield__label" for="rss-url">Enter RSS feed URL</label>
+    <div class="mdc-top-app-bar mdc-top-app-bar--fixed">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <span class="mdc-top-app-bar__title">RSS Reader</span>
+            </section>
+        </div>
+    </div>
+    <div class="mdc-top-app-bar--fixed-adjust">
+        <main class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div class="mdc-text-field mdc-text-field--outlined">
+                        <input type="text" id="rss-url" class="mdc-text-field__input">
+                        <label class="mdc-floating-label" for="rss-url">Enter RSS feed URL</label>
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch"></div>
+                            <div class="mdc-notched-outline__trailing"></div>
                         </div>
-                        <button id="add-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                            Add RSS Feed
-                        </button>
-                        <ul id="rss-list" class="mdl-list"></ul>
-                        <button id="fetch-all-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-                            Fetch All RSS Feeds
-                        </button>
-                        <div id="rss-feed"></div>
                     </div>
+                    <button id="add-btn" class="mdc-button mdc-button--raised mdc-button--primary">
+                        Add RSS Feed
+                    </button>
+                    <ul id="rss-list" class="mdc-list"></ul>
+                    <button id="fetch-all-btn" class="mdc-button mdc-button--raised mdc-button--secondary">
+                        Fetch All RSS Feeds
+                    </button>
+                    <div id="rss-feed"></div>
                 </div>
             </div>
         </main>
     </div>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
