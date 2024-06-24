@@ -3,10 +3,16 @@ const rssListElement = document.getElementById('rss-list');
 const rssFeedElement = document.getElementById('rss-feed');
 
 document.getElementById('add-btn').addEventListener('click', function() {
-    const rssUrl = document.getElementById('rss-url').value;
-    if (rssUrl && !rssList.includes(rssUrl)) {
-        rssList.push(rssUrl);
-        updateRSSList();
+    const websiteUrl = document.getElementById('rss-url').value;
+    if (websiteUrl && !rssList.includes(websiteUrl)) {
+        fetchRSSFeedUrl(websiteUrl).then(rssUrl => {
+            if (rssUrl) {
+                rssList.push(rssUrl);
+                updateRSSList();
+            } else {
+                alert('No RSS feed found for this website.');
+            }
+        });
         document.getElementById('rss-url').value = '';
     }
 });
@@ -20,11 +26,11 @@ function updateRSSList() {
     rssListElement.innerHTML = '';
     rssList.forEach((url, index) => {
         const li = document.createElement('li');
-        li.className = 'mdl-list__item';
+        li.className = 'mdc-list-item';
         li.textContent = url;
         const removeButton = document.createElement('button');
-        removeButton.className = 'mdl-button mdl-js-button mdl-button--icon';
-        removeButton.innerHTML = '<i class="material-icons">delete</i>';
+        removeButton.className = 'mdc-icon-button material-icons';
+        removeButton.textContent = 'delete';
         removeButton.addEventListener('click', () => {
             rssList.splice(index, 1);
             updateRSSList();
@@ -32,7 +38,6 @@ function updateRSSList() {
         li.appendChild(removeButton);
         rssListElement.appendChild(li);
     });
-    componentHandler.upgradeDom();
 }
 
 function fetchRSS(url) {
@@ -49,10 +54,9 @@ function fetchRSS(url) {
 function displayRSS(items) {
     items.forEach(item => {
         const rssItem = document.createElement('div');
-        rssItem.className = 'rss-item mdl-card mdl-shadow--2dp';
+        rssItem.className = 'rss-item';
 
         const title = document.createElement('h2');
-        title.className = 'mdl-card__title-text';
         title.textContent = item.title;
         title.addEventListener('click', () => {
             toggleContent(description);
@@ -60,7 +64,6 @@ function displayRSS(items) {
         rssItem.appendChild(title);
 
         const description = document.createElement('div');
-        description.className = 'mdl-card__supporting-text';
         description.style.display = 'none';
         description.innerHTML = item.content || item.description;
         rssItem.appendChild(description);
@@ -76,3 +79,12 @@ function toggleContent(element) {
         element.style.display = 'none';
     }
 }
+
+function fetchRSSFeedUrl(websiteUrl) {
+    const proxyUrl = `http://localhost:3000/fetch-rss?url=${encodeURIComponent(websiteUrl)}`;
+    return fetch(proxyUrl)
+        .then(response => response.json())
+        .then(data => data.rssUrl)
+        .catch(error => {
+            console.error('Error fetching the RSS feed URL:', error);
+            return null
