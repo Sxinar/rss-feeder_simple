@@ -1,25 +1,32 @@
-// Tema değiştirme işlevi
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const rssForm = document.getElementById('rss-form');
+const rssFeed = document.getElementById('rss-feed');
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }    
-}
+rssForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const rssUrl = document.getElementById('rss-url').value;
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+    fetch(rssUrl)
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
 
-// Sayfa yüklendiğinde tema kontrolü
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            let html = '';
+            items.forEach(item => {
+                html += `
+                    <article>
+                        <h2>${item.querySelector('title').textContent}</h2>
+                        <p>${item.querySelector('description').textContent}</p>
+                        <a href="${item.querySelector('link').textContent}" target="_blank">Devamını Oku</a>
+                    </article>
+                `;
+            });
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
-}
+            rssFeed.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('RSS beslemesi alınamadı!', error);
+            rssFeed.innerHTML = '<p>RSS beslemesi alınamadı. Lütfen geçerli bir RSS URL girin.</p>';
+        });
+});
