@@ -5,15 +5,15 @@ body {
     background-color: #f4f4f4;
 }
 
-.page-content {
-    max-width: 800px;
-    margin: 50px auto;
+.mdc-layout-grid {
+    margin-top: 20px;
     padding: 20px;
 }
 
 #rss-list {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 #rss-list li {
