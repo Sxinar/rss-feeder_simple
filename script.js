@@ -1,22 +1,32 @@
-// RSS beslemesini çekmek için bir API kullanabilirsiniz
-const rssUrl = 'https://example.com/rss-feed.xml';
+function haberleriGetir() {
+    const kaynakURL = document.getElementById('kaynakURL').value;
 
-// RSS verilerini al ve sayfada görüntüle
-fetch(rssUrl)
-    .then(response => response.text())
-    .then(data => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data, 'text/xml');
-        const items = xmlDoc.querySelectorAll('item');
+    fetch(kaynakURL)
+        .then(response => response.text())
+        .then(xml => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(xml, "text/xml");
 
-        const feedContainer = document.getElementById('feed-container');
-        items.forEach(item => {
-            const title = item.querySelector('title').textContent;
-            const link = item.querySelector('link').textContent;
+            const haberler = doc.getElementsByTagName("item");
 
-            const feedItem = document.createElement('div');
-            feedItem.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-            feedContainer.appendChild(feedItem);
+            let html = "";
+            for (const haber of haberler) {
+                const baslik = haber.getElementsByTagName("title")[0].textContent;
+                const link = haber.getElementsByTagName("link")[0].textContent;
+                const aciklama = haber.getElementsByTagName("description")[0].textContent;
+
+                html += `
+                    <div class="haber">
+                        <h2>${baslik}</h2>
+                        <a href="${link}" target="_blank">${link}</a>
+                        <p>${aciklama}</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('haberler').innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Hata:", error);
         });
-    })
-    .catch(error => console.error('RSS verileri alınamadı:', error));
+}
