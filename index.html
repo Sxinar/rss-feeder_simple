@@ -3,49 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSS Reader</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <title>SximpleRSS - RSS Okuyucu</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <span class="mdc-top-app-bar__title">RSS Reader</span>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <button id="theme-toggle-btn" class="mdc-icon-button material-icons">brightness_6</button>
-            </section>
-        </div>
+    <header>
+        <h1>SximpleRSS</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="home-link">Ana Sayfa</a></li>
+                <li><a href="#" id="favorites-link">Favoriler</a></li>
+                <li><a href="#" id="settings-link">Ayarlar</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="mdc-top-app-bar--fixed-adjust">
-        <main class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                    <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth mdc-text-field--with-leading-icon">
-                        <input type="text" id="rss-url" class="mdc-text-field__input">
-                        <label class="mdc-floating-label" for="rss-url">Enter RSS feed URL</label>
-                        <div class="mdc-notched-outline">
-                            <div class="mdc-notched-outline__leading"></div>
-                            <div class="mdc-notched-outline__notch"></div>
-                            <div class="mdc-notched-outline__trailing"></div>
-                        </div>
-                        <i class="material-icons mdc-text-field__icon">rss_feed</i>
-                    </div>
-                    <button id="add-btn" class="mdc-button mdc-button--raised mdc-button--outlined mdc-button--dense mdc-button--primary">
-                        Add RSS Feed
-                    </button>
-                    <ul id="rss-list" class="mdc-list"></ul>
-                    <button id="fetch-all-btn" class="mdc-button mdc-button--raised mdc-button--outlined mdc-button--dense mdc-button--secondary">
-                        Fetch All RSS Feeds
-                    </button>
-                    <div id="rss-feed"></div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="script.js"></script>
+
+    <main>
+        <section id="rss-feed">
+            <!-- Burada RSS beslemesi içeriği dinamik olarak eklenecek -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SximpleRSS. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
