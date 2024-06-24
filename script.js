@@ -20,9 +20,11 @@ function updateRSSList() {
     rssListElement.innerHTML = '';
     rssList.forEach((url, index) => {
         const li = document.createElement('li');
+        li.className = 'mdl-list__item';
         li.textContent = url;
         const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
+        removeButton.className = 'mdl-button mdl-js-button mdl-button--icon';
+        removeButton.innerHTML = '<i class="material-icons">delete</i>';
         removeButton.addEventListener('click', () => {
             rssList.splice(index, 1);
             updateRSSList();
@@ -30,6 +32,7 @@ function updateRSSList() {
         li.appendChild(removeButton);
         rssListElement.appendChild(li);
     });
+    componentHandler.upgradeDom();
 }
 
 function fetchRSS(url) {
@@ -46,9 +49,10 @@ function fetchRSS(url) {
 function displayRSS(items) {
     items.forEach(item => {
         const rssItem = document.createElement('div');
-        rssItem.className = 'rss-item';
+        rssItem.className = 'rss-item mdl-card mdl-shadow--2dp';
 
         const title = document.createElement('h2');
+        title.className = 'mdl-card__title-text';
         title.textContent = item.title;
         title.addEventListener('click', () => {
             toggleContent(description);
@@ -56,6 +60,7 @@ function displayRSS(items) {
         rssItem.appendChild(title);
 
         const description = document.createElement('div');
+        description.className = 'mdl-card__supporting-text';
         description.style.display = 'none';
         description.innerHTML = item.content || item.description;
         rssItem.appendChild(description);
