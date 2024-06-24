@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const feedList = document.getElementById('feedList');
 
   // Kullanılacak RSS feed URL'si
-  const rssFeedUrl = 'https://example.com/rss-feed'; // Burada kendi RSS feed URL'nizi girin
+  const rssFeedUrl = 'https://sxinar.github.io/index.xml'; // Burada kendi RSS feed URL'nizi girin
 
   // RSS verilerini çeken fonksiyon
   async function fetchRssData(url) {
