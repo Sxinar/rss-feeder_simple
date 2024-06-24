@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS Okuyucu</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>RSS Okuyucu</h1>
-    <div id="feed-container"></div>
+    <div class="container">
+        <h1>RSS Okuyucu</h1>
+        <div class="haber-kaynagi">
+            <label for="kaynakURL">Haber Kaynağı URL:</label>
+            <input type="text" id="kaynakURL" placeholder="Örneğin: https://www.hurriyet.com.tr/rss/guncel">
+            <button onclick="haberleriGetir()">Haberleri Getir</button>
+        </div>
+        <div id="haberler"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
