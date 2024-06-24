@@ -1,50 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSS Reader</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <title>RSS Okuyucu</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="mdc-top-app-bar mdc-top-app-bar--fixed">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <span class="mdc-top-app-bar__title">RSS Reader</span>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <button id="theme-toggle-btn" class="mdc-icon-button material-icons">brightness_6</button>
-            </section>
-        </div>
-    </div>
-    <div class="mdc-top-app-bar--fixed-adjust">
-        <main class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                    <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--rounded">
-                        <input type="text" id="rss-url" class="mdc-text-field__input">
-                        <label class="mdc-floating-label" for="rss-url">Enter RSS feed URL</label>
-                        <div class="mdc-notched-outline">
-                            <div class="mdc-notched-outline__leading"></div>
-                            <div class="mdc-notched-outline__notch"></div>
-                            <div class="mdc-notched-outline__trailing"></div>
-                        </div>
-                    </div>
-                    <button id="add-btn" class="mdc-button mdc-button--raised mdc-button--primary mdc-button--fullwidth">
-                        Add RSS Feed
-                    </button>
-                    <ul id="rss-list" class="mdc-list"></ul>
-                    <button id="fetch-all-btn" class="mdc-button mdc-button--raised mdc-button--secondary mdc-button--fullwidth">
-                        Fetch All RSS Feeds
-                    </button>
-                    <div id="rss-feed"></div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <h1>RSS Okuyucu</h1>
+    <div id="feed-container"></div>
     <script src="script.js"></script>
 </body>
 </html>
