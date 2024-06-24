@@ -1,7 +1,36 @@
-document.getElementById('fetch-btn').addEventListener('click', function() {
+const rssList = [];
+const rssListElement = document.getElementById('rss-list');
+const rssFeedElement = document.getElementById('rss-feed');
+
+document.getElementById('add-btn').addEventListener('click', function() {
     const rssUrl = document.getElementById('rss-url').value;
-    fetchRSS(rssUrl);
+    if (rssUrl && !rssList.includes(rssUrl)) {
+        rssList.push(rssUrl);
+        updateRSSList();
+        document.getElementById('rss-url').value = '';
+    }
 });
+
+document.getElementById('fetch-all-btn').addEventListener('click', function() {
+    rssFeedElement.innerHTML = '';
+    rssList.forEach(fetchRSS);
+});
+
+function updateRSSList() {
+    rssListElement.innerHTML = '';
+    rssList.forEach((url, index) => {
+        const li = document.createElement('li');
+        li.textContent = url;
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            rssList.splice(index, 1);
+            updateRSSList();
+        });
+        li.appendChild(removeButton);
+        rssListElement.appendChild(li);
+    });
+}
 
 function fetchRSS(url) {
     fetch(`https://api.rss2json.com/v1/api.json?rss_url=${url}`)
@@ -15,9 +44,6 @@ function fetchRSS(url) {
 }
 
 function displayRSS(items) {
-    const rssFeed = document.getElementById('rss-feed');
-    rssFeed.innerHTML = '';
-
     items.forEach(item => {
         const rssItem = document.createElement('div');
         rssItem.className = 'rss-item';
@@ -30,6 +56,6 @@ function displayRSS(items) {
         description.innerHTML = item.description;
         rssItem.appendChild(description);
 
-        rssFeed.appendChild(rssItem);
+        rssFeedElement.appendChild(rssItem);
     });
 }
