@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.haber-kaynagi {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.haber-kaynagi label {
+    margin-right: 10px;
+}
+
+.haber-kaynagi input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.haber-kaynagi button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.haber {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.haber h2 {
+    margin-top: 0;
+}
+
+.haber a {
+    color: #007bff;
+    text-decoration: none;
+}
