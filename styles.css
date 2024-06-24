@@ -1,105 +1,75 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset CSS */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
 }
 
-body.dark-theme {
-    background-color: #121212;
-    color: #e0e0e0;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Aydınlık tema arka plan rengi */
+    color: #333; /* Aydınlık tema metin rengi */
+    line-height: 1.6;
+    padding-bottom: 50px; /* Footer'ın altındaki içeriklerin görünmesi için */
 }
 
-.mdc-layout-grid {
-    margin-top: 20px;
+header {
+    background-color: #333; /* Aydınlık tema header arka plan rengi */
+    color: #fff; /* Aydınlık tema header metin rengi */
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
     padding: 20px;
 }
 
-.mdc-text-field--outlined .mdc-notched-outline__leading,
-.mdc-text-field--outlined .mdc-notched-outline__trailing {
-    border-radius: 25px;
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Aydınlık tema footer arka plan rengi */
+    color: #fff; /* Aydınlık tema footer metin rengi */
+    text-align: center;
+    padding: 10px 0;
 }
 
-.mdc-text-field__icon {
-    color: rgba(0, 0, 0, 0.6);
+/* Karanlık tema için ek stil */
+body.dark-mode {
+    background-color: #333; /* Karanlık tema arka plan rengi */
+    color: #f0f0f0; /* Karanlık tema metin rengi */
 }
 
-#rss-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
+body.dark-mode header {
+    background-color: #555; /* Karanlık tema header arka plan rengi */
+    color: #fff; /* Karanlık tema header metin rengi */
 }
 
-#rss-list li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    background-color: white;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#rss-feed {
-    margin-top: 20px;
-}
-
-.rss-item {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: white;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.rss-item h2 {
-    margin: 0 0 10px;
-    cursor: pointer;
-}
-
-.rss-item p {
-    margin: 0;
-}
-
-.rss-item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-}
-
-.dark-theme .rss-item,
-.dark-theme #rss-list li {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-}
-
-.mdc-button--primary {
-    color: #6200ee;
-    border-color: #6200ee;
-    border-radius: 25px;
-}
-
-.mdc-button--secondary {
-    color: #03dac6;
-    border-color: #03dac6;
-    border-radius: 25px;
-}
-
-@media (max-width: 600px) {
-    .mdc-layout-grid {
-        padding: 10px;
-    }
-    
-    #rss-list li, .rss-item {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .mdc-button {
-        width: 100%;
-        margin-top: 10px;
-    }
+body.dark-mode footer {
+    background-color: #555; /* Karanlık tema footer arka plan rengi */
+    color: #fff; /* Karanlık tema footer metin rengi */
 }
