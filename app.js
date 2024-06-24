@@ -1,5 +1,5 @@
 const rssForm = document.getElementById('rss-form');
-const rssFeed = document.getElementById('rss-feed');
+const newsList = document.getElementById('news-list');
 
 rssForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -12,21 +12,25 @@ rssForm.addEventListener('submit', function(e) {
             const xmlDoc = parser.parseFromString(data, 'text/xml');
             const items = xmlDoc.querySelectorAll('item');
 
+            // Haberleri listeleme
             let html = '';
             items.forEach(item => {
+                const title = item.querySelector('title').textContent;
+                const description = item.querySelector('description').textContent;
+                const link = item.querySelector('link').textContent;
+
                 html += `
-                    <article>
-                        <h2>${item.querySelector('title').textContent}</h2>
-                        <p>${item.querySelector('description').textContent}</p>
-                        <a href="${item.querySelector('link').textContent}" target="_blank">Devamını Oku</a>
-                    </article>
+                    <li>
+                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                        <p>${description}</p>
+                    </li>
                 `;
             });
 
-            rssFeed.innerHTML = html;
+            newsList.innerHTML = html;
         })
         .catch(error => {
             console.error('RSS beslemesi alınamadı!', error);
-            rssFeed.innerHTML = '<p>RSS beslemesi alınamadı. Lütfen geçerli bir RSS URL girin.</p>';
+            newsList.innerHTML = '<li>RSS beslemesi alınamadı. Lütfen geçerli bir RSS URL girin.</li>';
         });
 });
